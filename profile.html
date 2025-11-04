@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Data & Compliance</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Inter font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+        }
+        /* Custom red to mimic the screenshot's required fields */
+        .required-field-bg {
+            background-color: #fecaca; /* Light red/pink background */
+            border-color: #dc2626; /* Strong red border */
+        }
+    </style>
+</head>
+<body class="min-h-screen p-4 md:p-8 flex justify-center items-start">
+
+    <!-- Main Application Card -->
+    <div class="w-full max-w-7xl bg-white shadow-2xl rounded-xl border border-gray-300">
+
+        <!-- Header and Compliance Status -->
+        <div class="p-6 border-b border-gray-200">
+            <div class="flex justify-between items-center mb-2">
+                <h1 class="text-xl font-semibold text-gray-800"></h1>
+                <label class="flex items-center space-x-2 text-gray-700">
+                    <input type="checkbox" class="rounded text-teal-600 focus:ring-teal-500">
+                    <span>Dormant</span>
+                </label>
+            </div>
+            <p class="text-sm text-gray-500">
+                <!-- Compliance Status: <span class="font-medium text-green-600">No compliance set</span> / Hep B - [No] / Covid - [No] / POPIA - [No] / SANC # - [N/A] -->
+            </p>
+        </div>
+
+        <!-- Tab Navigation -->
+        <div class="flex border-b border-gray-200 bg-gray-50">
+            <button class="px-4 py-2 text-sm font-medium border-r border-gray-200 text-white bg-teal-600 rounded-tl-lg hover:bg-teal-700">General</button>
+            <button class="px-4 py-2 text-sm font-medium border-r border-gray-200 text-gray-700 hover:bg-gray-100">General 2</button>
+            <button class="px-4 py-2 text-sm font-medium border-r border-gray-200 text-gray-700 hover:bg-gray-100">Payroll</button>
+            <button class="px-4 py-2 text-sm font-medium border-r border-gray-200 text-gray-700 hover:bg-gray-100">Documents</button>
+            <button class="px-4 py-2 text-sm font-medium border-r border-gray-200 text-gray-700 hover:bg-gray-100">Pay-slips</button>
+            <button class="ml-auto px-4 py-2 text-sm font-medium bg-teal-200 text-teal-800 hover:bg-teal-300 rounded-tr-lg">Availability</button>
+        </div>
+
+        <!-- General Tab Content Form -->
+        <form id="employeeForm" class="p-6" onsubmit="handleFormSubmit(event)">
+            <h2 class="text-md font-semibold text-gray-600 mb-4">Contact:</h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+                <!-- Column 1: Image, Locum/Permanent, Ref No -->
+                <div class="flex flex-col space-y-4">
+                    <!-- Image Placeholder -->
+                    <div class="w-full h-48 bg-gray-300 flex items-center justify-center text-gray-600 rounded-md border border-gray-400">
+                        No Image
+                    </div>
+                    <button type="button" class="text-sm text-teal-600 hover:text-teal-800 self-start">Browse</button>
+                    
+                    <!-- Locum/Permanent -->
+                    <div class="pt-2 space-y-1">
+                        <label class="flex items-center space-x-2 text-sm text-gray-700">
+                            <input type="checkbox" class="rounded text-teal-600 focus:ring-teal-500">
+                            <span>Locum</span>
+                        </label>
+                        <label class="flex items-center space-x-2 text-sm text-gray-700">
+                            <input type="checkbox" class="rounded text-teal-600 focus:ring-teal-500" checked>
+                            <span>Permanent</span>
+                        </label>
+                    </div>
+
+                    <!-- Ref No -->
+                    <div class="mt-4">
+                        <label for="refNo" class="block text-xs font-medium text-gray-500">Ref No:</label>
+                        <input type="text" id="refNo" name="refNo" value="61251" readonly class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 bg-gray-100 text-gray-600">
+                    </div>
+                </div>
+
+                <!-- Column 2: Personal and Visa Details -->
+                <div class="space-y-3">
+                    <!-- First Name -->
+                    <div class="flex items-center">
+                        <label for="firstName" class="w-2/5 text-sm font-medium text-gray-700 pr-2">First Name: *</label>
+                        <input type="text" id="firstName" name="firstName" required class="w-3/5 border rounded-md shadow-sm p-2 text-sm required-field-bg" placeholder="John">
+                    </div>
+                    <!-- Last Name -->
+                    <div class="flex items-center">
+                        <label for="lastName" class="w-2/5 text-sm font-medium text-gray-700 pr-2">Last Name: *</label>
+                        <input type="text" id="lastName" name="lastName" required class="w-3/5 border rounded-md shadow-sm p-2 text-sm required-field-bg" placeholder="Doe">
+                    </div>
+                    <!-- Preferred Name -->
+                    <div class="flex items-center">
+                        <label for="preferredName" class="w-2/5 text-sm font-medium text-gray-700 pr-2">Preferred Name:</label>
+                        <input type="text" id="preferredName" name="preferredName" class="w-3/5 border border-gray-300 rounded-md shadow-sm p-2 text-sm bg-white" placeholder="Johnny">
+                    </div>
+                    <!-- DOB -->
+                    <div class="flex items-center">
+                        <label for="dob" class="w-2/5 text-sm font-medium text-gray-700 pr-2">DOB:</label>
+                        <input type="date" id="dob" name="dob" value="2024-08-01" class="w-3/5 border border-gray-300 rounded-md shadow-sm p-2 text-sm bg-white">
+                    </div>
+                    <!-- ID Number -->
+                    <div class="flex items-center">
+                        <label for="idNumber" class="w-2/5 text-sm font-medium text-gray-700 pr-2">ID Number: *</label>
+                        <div class="w-3/5 flex items-center space-x-1">
+                            <input type="text" id="idNumber" name="idNumber" required class="flex-grow border rounded-md shadow-sm p-2 text-sm required-field-bg" placeholder="e.g., 9001015009087">
+                            <button type="button" class="px-2 py-1 text-xs text-white bg-gray-500 rounded hover:bg-gray-600" onclick="copyToClipboard('idNumber')">Copy</button>
+                        </div>
+                    </div>
+                    <!-- SA ID No -->
+                    <div class="flex items-center">
+                        <label for="saId" class="w-2/5 text-sm font-medium text-gray-700 pr-2">South African ID No:</label>
+                        <div class="w-3/5 flex items-center space-x-2">
+                            <input type="text" id="saId" name="saId" class="flex-grow border border-gray-300 rounded-md shadow-sm p-2 text-sm bg-white">
+                            <input type="checkbox" class="rounded text-teal-600 focus:ring-teal-500">
+                        </div>
+                    </div>
+                    <!-- Passport Number -->
+                    <div class="flex items-center">
+                        <label for="passportNumber" class="w-2/5 text-sm font-medium text-gray-700 pr-2">Passport Number: *</label>
+                        <input type="text" id="passportNumber" name="passportNumber" required class="w-3/5 border rounded-md shadow-sm p-2 text-sm required-field-bg" placeholder="P987654321">
+                    </div>
+                    <!-- Visa Type -->
+                    <div class="flex items-center">
+                        <label for="visaType" class="w-2/5 text-sm font-medium text-gray-700 pr-2">Visa Type:</label>
+                        <select id="visaType" name="visaType" class="w-3/5 border border-gray-300 rounded-md shadow-sm p-2 text-sm bg-white">
+                            <option>None Assigned</option>
+                            <option>Work Permit</option>
+                            <option>Study Visa</option>
+                        </select>
+                        <input type="checkbox" class="ml-2 rounded text-teal-600 focus:ring-teal-500">
+                    </div>
+                    <!-- Visa Start -->
+                    <div class="flex items-center">
+                        <label for="visaStart" class="w-2/5 text-sm font-medium text-gray-700 pr-2">Visa Start:</label>
+                        <input type="date" id="visaStart" name="visaStart" value="2024-08-01" class="w-3/5 border border-gray-300 rounded-md shadow-sm p-2 text-sm bg-white">
+                    </div>
+                    <!-- Visa Expiration -->
+                    <div class="flex items-center">
+                        <label for="visaExpiration" class="w-2/5 text-sm font-medium text-gray-700 pr-2">Visa Expiration:</label>
+                        <input type="date" id="visaExpiration" name="visaExpiration" value="2024-08-01" class="w-3/5 border border-gray-300 rounded-md shadow-sm p-2 text-sm bg-white">
+                    </div>
+                    <!-- Country of Origin -->
+                    <div class="flex items-center">
+                        <label for="countryOrigin" class="w-2/5 text-sm font-medium text-gray-700 pr-2">Country of Origin:</label>
+                        <select id="countryOrigin" name="countryOrigin" class="w-3/5 border border-gray-300 rounded-md shadow-sm p-2 text-sm bg-white">
+                            <option>None Assigned</option>
+                            <option>South Africa</option>
+                            <option>United Kingdom</option>
+                        </select>
+                    </div>
+                    <!-- Nationality -->
+                    <div class="flex items-center">
+                        <label for="nationality" class="w-2/5 text-sm font-medium text-gray-700 pr-2">Nationality:</label>
+                        <select id="nationality" name="nationality" class="w-3/5 border border-gray-300 rounded-md shadow-sm p-2 text-sm bg-white">
+                            <option>South Africa</option>
+                            <option>British</option>
+                            <option>Australian</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Column 3: Contact and Compliance -->
+                <div class="flex flex-col space-y-3">
+                    <!-- Home Language -->
+                    <div class="flex items-center">
+                        <label for="homeLanguage" class="w-2/5 text-sm font-medium text-gray-700 pr-2">Home Language:</label>
+                        <select id="homeLanguage" name="homeLanguage" class="w-3/5 border border-gray-300 rounded-md shadow-sm p-2 text-sm bg-white">
+                            <option>English</option>
+                            <option>Afrikaans</option>
+                        </select>
+                    </div>
+                    <!-- Division -->
+                    <div class="flex items-center">
+                        <label for="division" class="w-2/5 text-sm font-medium text-gray-700 pr-2">Division:</label>
+                        <select id="division" name="division" class="w-3/5 border border-gray-300 rounded-md shadow-sm p-2 text-sm bg-white">
+                            <option>None Selected</option>
+                            <option>HR</option>
+                            <option>Finance</option>
+                        </select>
+                    </div>
+                    <!-- Email -->
+                    <div class="flex items-center">
+                        <label for="email" class="w-2/5 text-sm font-medium text-gray-700 pr-2">Email:</label>
+                        <input type="email" id="email" name="email" class="w-3/5 border border-gray-300 rounded-md shadow-sm p-2 text-sm bg-white" placeholder="name@example.com">
+                    </div>
+                    <!-- Consultant -->
+                    <div class="flex items-center">
+                        <label for="consultant" class="w-2/5 text-sm font-medium text-gray-700 pr-2">Consultant:</label>
+                        <div class="w-3/5 border border-gray-300 rounded-md shadow-sm p-2 text-sm bg-white flex justify-between items-center bg-gray-100">
+                            <span>None Selected</span>
+                            <span class="text-teal-600 text-xs cursor-pointer hover:underline">Edit Roles</span>
+                        </div>
+                    </div>
+                    <!-- Cell -->
+                    <div class="flex items-center">
+                        <label for="cell" class="w-2/5 text-sm font-medium text-gray-700 pr-2">Cell: *</label>
+                        <div class="w-3/5 flex items-center space-x-1">
+                            <input type="tel" id="cell" name="cell" required class="flex-grow border rounded-md shadow-sm p-2 text-sm required-field-bg" placeholder="+27 82 123 4567">
+                            <button type="button" class="px-2 py-1 text-xs text-white bg-gray-500 rounded hover:bg-gray-600" onclick="copyToClipboard('cell')">Copy</button>
+                        </div>
+                    </div>
+                    <!-- Home Tel -->
+                    <div class="flex items-center">
+                        <label for="homeTel" class="w-2/5 text-sm font-medium text-gray-700 pr-2">Home Tel:</label>
+                        <input type="tel" id="homeTel" name="homeTel" class="w-3/5 border border-gray-300 rounded-md shadow-sm p-2 text-sm bg-white">
+                    </div>
+                    <!-- Other Contact -->
+                    <div class="flex items-center">
+                        <label for="otherContact" class="w-2/5 text-sm font-medium text-gray-700 pr-2">Other Contact:</label>
+                        <input type="text" id="otherContact" name="otherContact" class="w-3/5 border border-gray-300 rounded-md shadow-sm p-2 text-sm bg-white">
+                    </div>
+                    <!-- Address -->
+                    <div class="flex items-start">
+                        <label for="address" class="w-2/5 text-sm font-medium text-gray-700 pt-2 pr-2">Address: *</label>
+                        <textarea id="address" name="address" required rows="3" class="w-3/5 border rounded-md shadow-sm p-2 text-sm required-field-bg" placeholder="Street Address, City, Province"></textarea>
+                    </div>
+                    <!-- Postal Code -->
+                    <div class="flex items-center">
+                        <label for="postalCode" class="w-2/5 text-sm font-medium text-gray-700 pr-2">Postal Code:</label>
+                        <input type="text" id="postalCode" name="postalCode" class="w-3/5 border border-gray-300 rounded-md shadow-sm p-2 text-sm bg-white">
+                    </div>
+                    <!-- Note -->
+                    <div class="flex items-start">
+                        <label for="note" class="w-2/5 text-sm font-medium text-gray-700 pt-2 pr-2">Note:</label>
+                        <textarea id="note" name="note" rows="2" class="w-3/5 border border-gray-300 rounded-md shadow-sm p-2 text-sm bg-white"></textarea>
+                    </div>
+                    <!-- Compliance -->
+                    <div class="flex items-center pt-2">
+                        <label for="compliance" class="w-2/5 text-sm font-medium text-gray-700 pr-2">Compliance:</label>
+                        <button type="button" class="px-3 py-1 text-sm text-gray-700 bg-gray-200 rounded hover:bg-gray-300 border border-gray-400">View Compliance</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Floating Message Box (for API simulation) -->
+            <div id="messageBox" class="fixed bottom-20 right-8 p-4 rounded-lg shadow-xl hidden transition-opacity duration-300 z-50 text-white font-medium" role="alert"></div>
+
+            <!-- Bottom Action Bar (outside form content grid) -->
+            <div class="mt-6 pt-4 border-t border-gray-200 flex justify-end space-x-3">
+                <button type="submit" class="px-6 py-2 text-white bg-red-600 rounded-md shadow-lg hover:bg-red-700 transition duration-150 ease-in-out">
+                    Save
+                </button>
+                <button type="button" class="px-6 py-2 text-gray-700 bg-gray-300 rounded-md shadow-lg hover:bg-gray-400 transition duration-150 ease-in-out">
+                    Close
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // Function to copy text from an input to the clipboard
+        function copyToClipboard(inputId) {
+            const input = document.getElementById(inputId);
+            if (input) {
+                // Select the text field
+                input.select();
+                input.setSelectionRange(0, 99999); // For mobile devices
+
+                try {
+                    // Copy the text inside the text field
+                    document.execCommand('copy');
+                    showMessage('Text copied to clipboard!', 'bg-green-500');
+                } catch (err) {
+                    showMessage('Failed to copy text.', 'bg-red-500');
+                    console.error('Copy failed: ', err);
+                }
+            }
+        }
+
+        // Custom message box instead of alert()
+        function showMessage(message, className) {
+            const msgBox = document.getElementById('messageBox');
+            msgBox.textContent = message;
+            msgBox.className = `fixed bottom-20 right-8 p-4 rounded-lg shadow-xl transition-opacity duration-300 z-50 text-white font-medium ${className}`;
+            msgBox.style.display = 'block';
+
+            // Hide after 3 seconds
+            setTimeout(() => {
+                msgBox.style.display = 'none';
+            }, 3000);
+        }
+
+
+        // Function to handle form submission (SIMULATING API/MYSQL INTERACTION)
+        function handleFormSubmit(event) {
+            event.preventDefault(); // Stop the default form submission
+
+            const form = document.getElementById('employeeForm');
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData.entries());
+
+            // 1. Show 'Saving...' message
+            showMessage('Saving data via API...', 'bg-blue-600');
+
+            // 2. Simulate API call delay (2 seconds)
+            setTimeout(() => {
+                // In a real application, you would use:
+                // fetch('/api/save-employee-data', {
+                //     method: 'POST',
+                //     headers: { 'Content-Type': 'application/json' },
+                //     body: JSON.stringify(data)
+                // })
+                // .then(response => response.json())
+                // .then(result => { ... })
+                // .catch(error => { ... });
+
+                // Since we are simulating, we'll just log the data and show success.
+                console.log("--- Data that would be sent to the server for MySQL insertion ---");
+                console.log(data);
+                console.log("-----------------------------------------------------------------");
+                
+                // 3. Show success message
+                showMessage('Data successfully saved! (Simulated MySQL write via server API)', 'bg-green-600');
+
+                // Optional: Clear form or redirect the user
+                // form.reset();
+
+            }, 2000); 
+        }
+
+    </script>
+</body>
+</html>
