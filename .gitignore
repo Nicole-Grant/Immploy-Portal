@@ -1,0 +1,23 @@
+php/config.php
+     *.log
+     .DS_Store
+```
+   - Save it as `.gitignore` (make sure it's not `.gitignore.txt`)
+   - On Windows: In Notepad, choose "Save As", select "All Files" as the type, then name it `.gitignore`
+
+Your folder structure should now look like this:
+```
+synergy/
+├── .gitignore
+├── index.html
+├── README.md
+├── css/
+│   └── login.css
+├── js/
+│   ├── login.js
+│   └── medical-icons.js
+├── php/
+│   ├── config.php
+│   └── login.php
+└── database/
+    └── schema.sql

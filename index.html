@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Synergy - Login</title>
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+    <div class="medical-icons" id="medicalIcons"></div>
+    
+    <div class="login-container">
+        <div class="login-header">
+            <div class="logo-container">
+                <div class="logo-wrapper">
+                    <div class="logo-icon">
+                        <div class="people-icons">
+                            <div class="person person-red">
+                                <div class="person-red-head"></div>
+                                <div class="person-red-body"></div>
+                            </div>
+                            <div class="person person-grey">
+                                <div class="person-grey-head"></div>
+                                <div class="person-grey-body"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="logo-text-group">
+                        <div class="logo-main-text">IMMPL<span class="logo-o">O</span>Y</div>
+                        <div class="logo-sub-text">
+                            <span class="dot"></span>
+                            RECRUITMENT
+                            <span class="dot"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="logo-text">Synergy</div>
+        </div>
+        
+        <form class="login-form" id="loginForm">
+            <div id="errorMessage" class="error-message" style="display: none;"></div>
+            
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" placeholder="Enter your username" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+            </div>
+            
+            <div class="button-container">
+                <button type="submit" class="login-button">
+                    <span class="button-text">Login</span>
+                </button>
+                <button type="button" class="close-button" onclick="handleClose()">
+                    <span class="button-text">Close</span>
+                </button>
+            </div>
+
+            <div class="forgot-password">
+                <a href="forgot-password.html">Forgot password?</a>
+            </div>
+        </form>
+    </div>
+
+    <script src="js/medical-icons.js"></script>
+    <script src="js/login.js"></script>
+</body>
+</html>
