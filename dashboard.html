@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Synergy - Dashboard</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+    <!-- Medical background icons (same as login page) -->
+    <div class="medical-icons" id="medicalIcons"></div>
+    
+    <div class="container">
+        <!-- Header with logo and user info -->
+        <header class="header">
+            <div class="logo-section">
+                <div class="logo-wrapper">
+                    <div class="logo-icon">
+                        <div class="people-icons">
+                            <div class="person-red">
+                                <div class="person-red-head"></div>
+                                <div class="person-red-body"></div>
+                            </div>
+                            <div class="person-grey">
+                                <div class="person-grey-head"></div>
+                                <div class="person-grey-body"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="logo-text-group">
+                        <div class="logo-main-text">IMMPL<span class="logo-o">O</span>Y</div>
+                        <div class="logo-sub-text">
+                            <span class="dot"></span>
+                            RECRUITMENT
+                            <span class="dot"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="synergy-text">Synergy</div>
+            </div>
+            
+            <div class="user-section">
+                <div class="welcome-text">
+                    <div class="welcome-label">Welcome back,</div>
+                    <div class="user-name" id="userName">Loading...</div>
+                </div>
+                <button class="logout-btn" onclick="handleLogout()">Logout</button>
+            </div>
+        </header>
+
+        <!-- User Details Card -->
+        <div class="user-details-card">
+            <h2>My Information</h2>
+            <div class="details-grid">
+                <div class="detail-item">
+                    <span class="detail-label">Email:</span>
+                    <span class="detail-value" id="userEmail">Loading...</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Phone:</span>
+                    <span class="detail-value" id="userPhone">Loading...</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Role:</span>
+                    <span class="detail-value" id="userRole">Loading...</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Status:</span>
+                    <span class="detail-value status-active">Active</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Dashboard Sections -->
+        <h1 class="page-title">Dashboard</h1>
+        
+        <div class="dashboard-grid">
+            <!-- 1. My Shifts -->
+            <div class="dashboard-card" onclick="navigateTo('shifts.html')">
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
+                    </svg>
+                </div>
+                <h2 class="card-title">My Shifts</h2>
+                <p class="card-description">View and manage your upcoming shifts on the calendar</p>
+                <div class="card-badge">3 upcoming</div>
+            </div>
+
+            <!-- 2. My Availability -->
+            <div class="dashboard-card" onclick="navigateTo('availability.html')">
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm4.2 14.2L11 13V7h1.5v5.2l4.5 2.7-.8 1.3z"/>
+                    </svg>
+                </div>
+                <h2 class="card-title">My Availability</h2>
+                <p class="card-description">Set your available times on the calendar</p>
+                <div class="card-badge">Update weekly</div>
+            </div>
+
+            <!-- 3. My Payslips -->
+            <div class="dashboard-card" onclick="navigateTo('payslips.html')">
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zm-7-2h2v-2h2v-2h-2v-2h-2v2H9v2h3z"/>
+                    </svg>
+                </div>
+                <h2 class="card-title">My Payslips</h2>
+                <p class="card-description">Download payslips from the last 12 months</p>
+                <div class="card-badge">12 available</div>
+            </div>
+
+            <!-- 4. My Timesheets -->
+            <div class="dashboard-card" onclick="navigateTo('timesheets.html')">
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+                    </svg>
+                </div>
+                <h2 class="card-title">My Timesheets</h2>
+                <p class="card-description">View timesheet history for the last 12 months</p>
+                <div class="card-badge">View history</div>
+            </div>
+
+            <!-- 5. My Details -->
+            <div class="dashboard-card" onclick="navigateTo('profile.html')">
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                    </svg>
+                </div>
+                <h2 class="card-title">My Details</h2>
+                <p class="card-description">Update personal info and upload documents</p>
+                <div class="card-badge">Manage profile</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Include JavaScript files -->
+    <script src="js/medical-icons.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>
