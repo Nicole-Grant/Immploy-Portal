@@ -1,3 +1,17 @@
+// TEMP: Bypass login for testing (remove before production)
+sessionStorage.setItem('userId', '1');
+sessionStorage.setItem('userName', 'Test User');
+sessionStorage.setItem('userEmail', 'test@example.com');
+sessionStorage.setItem('userPhone', '1234567890');
+sessionStorage.setItem('userRole', 'Employee');
+
+// Original code below
+document.addEventListener('DOMContentLoaded', function () {
+    checkAuth();
+    loadUserInfo();
+});
+
+
 // Check if user is logged in when page loads
 document.addEventListener('DOMContentLoaded', function () {
     checkAuth();
