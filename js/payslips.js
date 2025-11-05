@@ -21,6 +21,7 @@ function navigateTo(page) {
 
 // Sample payslips data for last 12 months
 const payslipsData = [
+    
     {
         id: 1,
         period: 'October 2025',
