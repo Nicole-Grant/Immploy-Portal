@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Synergy - My Timesheets</title>
+    <link rel="stylesheet" href="css/timesheets.css">
+</head>
+<body>
+    <!-- Medical background icons -->
+    <div class="medical-icons" id="medicalIcons"></div>
+
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo-section">
+                <div class="logo-wrapper">
+                    <div class="logo-icon">
+                        <div class="people-icons">
+                            <div class="person-red">
+                                <div class="person-red-head"></div>
+                                <div class="person-red-body"></div>
+                            </div>
+                            <div class="person-grey">
+                                <div class="person-grey-head"></div>
+                                <div class="person-grey-body"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="logo-text-group">
+                        <div class="logo-main-text">IMPL<span class="logo-o">O</span>Y</div>
+                        <div class="logo-sub-text">
+                            <span class="dot"></span>
+                            RECRUITMENT
+                            <span class="dot"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="synergy-text">Synergy</div>
+            </div>
+
+            <div class="user-section">
+                <div class="welcome-text">
+                    <div class="welcome-label">Welcome back,</div>
+                    <div class="user-name" id="userName">Loading...</div>
+                </div>
+                <button class="back-btn" onclick="navigateTo('dashboard.html')">← Back</button>
+            </div>
+        </header>
+
+        <!-- Page Title -->
+        <h1 class="page-title">My Timesheets</h1>
+
+        <!-- Summary Cards -->
+        <div class="summary-section">
+            <div class="summary-card">
+                <div class="summary-icon">📋</div>
+                <div class="summary-info">
+                    <div class="summary-label">Total Timesheets</div>
+                    <div class="summary-value" id="totalTimesheets">12</div>
+                </div>
+            </div>
+            <div class="summary-card">
+                <div class="summary-icon">⏱️</div>
+                <div class="summary-info">
+                    <div class="summary-label">Total Hours</div>
+                    <div class="summary-value" id="totalHours">0</div>
+                </div>
+            </div>
+            <div class="summary-card">
+                <div class="summary-icon">📅</div>
+                <div class="summary-info">
+                    <div class="summary-label">Last Submission</div>
+                    <div class="summary-value" id="lastSubmission">-</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Timesheets List Section -->
+        <div class="timesheets-section">
+            <div class="section-header">
+                <h2>Last 12 Months</h2>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" onclick="filterTimesheets('all')">All</button>
+                    <button class="filter-btn" onclick="filterTimesheets('2025')">2025</button>
+                    <button class="filter-btn" onclick="filterTimesheets('2024')">2024</button>
+                </div>
+            </div>
+
+            <div id="timesheetsList" class="timesheets-list">
+                <!-- Timesheets will be loaded here by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Include JavaScript files -->
+    <script src="js/medical-icons.js"></script>
+    <script src="js/timesheets.js"></script>
+</body>
+</html>
